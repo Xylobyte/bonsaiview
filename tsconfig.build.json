@@ -1,0 +1,15 @@
+{
+    "extends": "./tsconfig.app.json",
+    "compilerOptions": {
+        "noEmit": false,
+        "emitDeclarationOnly": true,
+        "declaration": true,
+        "declarationMap": false,
+        "outDir": "./types"
+    },
+    "include": [
+        "src/vite-env.d.ts",
+        "src/bonsaiview",
+        "index.ts"
+    ]
+}
