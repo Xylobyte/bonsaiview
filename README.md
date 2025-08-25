@@ -42,34 +42,37 @@ pnpm add bonsaiview
 ## Usage
 
 ```tsx
-import React, {useState, memo} from "react";
-import BonsaiView, {BonsaiViewProps, TreeItem} from "bonsai-view";
+import BonsaiView from "bonsai-view";
+import type { TreeItem, TreeViewRef } from "./bonsaiview/types.ts"
+import { useRef, useState } from "react"
 
 const initialTree: TreeItem[] = [
 	/* your tree data */
-];
+]
 
 export default function App() {
-	const [tree, setTree] = useState<TreeItem[]>(initialTree);
+	const [tree, setTree] = useState<TreeItem[]>(initialTree)
+	const treeviewRef = useRef<TreeViewRef>(null)
 
 	const handleDrop = (newTree: TreeItem[]) => {
-		setTree(newTree);
-	};
+		setTree(newTree)
+	}
 
 	return (
 		<BonsaiView
 			tree={tree}
 			rootId="root"
-			renderItem={(item, {depth}) => (
-				<div style={{marginLeft: depth * 20}}>
-					{item.isFolder ? "📁" : "📄"} {item.title}
+			renderItem={(item, _opened, _selected, depth) => (
+				<div style={{ marginLeft: depth * 20 }}>
+					{item.isFolder ? "📁" : "📄"} {item.text}
 				</div>
 			)}
 			onDrop={handleDrop}
 			useSelection
 			onSelectionChange={console.log}
+			ref={treeviewRef}
 		/>
-	);
+	)
 }
 ```
 
