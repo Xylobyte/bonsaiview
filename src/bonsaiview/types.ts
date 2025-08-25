@@ -113,6 +113,11 @@ export type BonsaiViewProps = {
     folderOnTop?: boolean
 
     /**
+     * Classnames for the root element of the treeview
+     */
+    className?: string
+
+    /**
      * If `true`, the component will maintain and expose a selection state.
      */
     useSelection?: boolean
