@@ -11,7 +11,7 @@ import { classNames } from "../utils/class-names.ts"
  * React component that renders a performant and powerful tree view.
  *
  * @param {BonsaiViewProps} props - The properties that configure the tree view.
- * @returns {ReactElement} A `<div>` wrapper (you should replace this with your actual markup).
+ * @returns {ReactElement}
  */
 function BonsaiView(props: BonsaiViewProps): ReactElement {
     const componentId = useRef(crypto.randomUUID())
@@ -399,6 +399,7 @@ function BonsaiView(props: BonsaiViewProps): ReactElement {
                     }
                     item={item}
                     childCount={(item.isFolder && treeParentMap[item.id]?.length) || null}
+                    depthStepSize={props.depthStepSize}
                     renderItem={props.renderItem}
                     onSelectionStart={onSelectionStart}
                     onSelectionEnd={onSelectionEnd}
@@ -411,6 +412,7 @@ function BonsaiView(props: BonsaiViewProps): ReactElement {
             actualSelection,
             visibleTree,
             props.renderItem,
+            props.depthStepSize,
             onSelectionStart,
             onSelectionEnd,
             onDragStart,

@@ -57,10 +57,8 @@
         "react": "^19.0.0",
         "react-dom": "^19.0.0"
     },
-    "dependencies": {
-        "react-virtuoso": "^4.14.0"
-    },
     "devDependencies": {
+        "react-virtuoso": "^4.14.0",
         "@eslint/js": "^9.34.0",
         "@types/node": "^24.3.0",
         "@types/react": "^19.1.11",

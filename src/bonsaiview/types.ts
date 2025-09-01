@@ -108,6 +108,14 @@ export type BonsaiViewProps = {
     renderItem: RenderItem
 
     /**
+     * Size (in px) used to indent each tree level.
+     * Example: `depth = 3` & `depthStepSize = 40` → `margin-left = 120px`.
+     *
+     * @default 16
+     */
+    depthStepSize?: number
+
+    /**
      * If `true`, folders are rendered before files at the same level.
      */
     folderOnTop?: boolean
@@ -119,11 +127,15 @@ export type BonsaiViewProps = {
 
     /**
      * If `true`, the component will maintain and expose a selection state.
+     *
+     * @default false
      */
     useSelection?: boolean
 
     /**
      * If `true`, the component will accept drops from outside the tree.
+     *
+     * @default false
      */
     useExternalDrop?: boolean
 
@@ -133,6 +145,8 @@ export type BonsaiViewProps = {
      * @param dropSource - The node being dragged (or `undefined` if dropping from outside).
      * @param dropTarget - The node that is the drop target.
      * @returns `true` to allow the drop, or `void` to use the default validation.
+     *
+     * @default Return false only if the target node is a child of the source node.
      */
     canDrop?: (dropSource: TreeItem | undefined, dropTarget: TreeItem) => boolean | void
 
@@ -147,6 +161,8 @@ export type BonsaiViewProps = {
      * Called when a secondary selection (e.g., multi‑select) changes.
      *
      * @param items - The full array of selected nodes.
+     *
+     * @default Add focused class to bonsaiview-item if item is a folder or secondarySelection length > 1
      */
     onSecondarySelectionChange?: (items: TreeItem[]) => void
 

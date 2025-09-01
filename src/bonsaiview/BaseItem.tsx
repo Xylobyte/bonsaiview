@@ -10,6 +10,7 @@ export type BaseItemProps = {
     selected: boolean
     focused: boolean
     renderItem: RenderItem
+    depthStepSize?: number
     index: number
     childCount: number | null
     isLastOfFolder: boolean
@@ -45,7 +46,11 @@ function BaseItem(props: BaseItemProps) {
     }
 
     return (
-        <div onKeyDown={handleKeyDown} onClick={handleClick} style={{ marginLeft: 16 * props.depth + 10 }}>
+        <div
+            onKeyDown={handleKeyDown}
+            onClick={handleClick}
+            style={{ marginLeft: (props.depthStepSize || 16) * props.depth }}
+        >
             <div className="bonsaiview-drop-zone" data-index={props.index} data-after={false}></div>
 
             <div

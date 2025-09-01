@@ -1,4 +1,4 @@
-# BonsaiView
+# 🌳 BonsaiView
 
 **A fast, light and modern React TreeView with virtual scroll and a focus on optimizations and full customization.**
 
